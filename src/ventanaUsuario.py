@@ -136,11 +136,9 @@ class VentanaUsuario(Tk):
             ventanaDevs.title("Sistemas Gestor de Dinero - Acerca de")
 
             textoInfo = f"Desarrolladores:\n" \
-                        f"• Juan Daniel Villa Mejia\n" \
-                        f"• Juan Camilo Montoya Mejia\n" \
-                        f"• Carlos Sebastián Zamora Rosero\n" \
-                        f"• Juan David Cortes Amador\n" \
-                        f"• Andrés Felipe Parra Naranjo\n" \
+                        f"• Julián Álvarez\n" \
+                        f"• Isabela Hernández\n" \
+                        f"• Ana María Guarín\n" \
 
             devs = Label(ventanaDevs, text = textoInfo, justify = "left", font=("Verdana", 12))
             devs.pack(fill=tkinter.Y, expand=True)

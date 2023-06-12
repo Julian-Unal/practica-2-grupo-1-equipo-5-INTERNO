@@ -1,4 +1,5 @@
 import datetime
+import math
 
 class Prestamo:
     tasa = 0.18

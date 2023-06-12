@@ -1,12 +1,11 @@
 # Ana Guarín
 # Isabela Hernandez
-# Cristian Menaa
 # Julián Álvarez
 
-from gestorAplicacion.interfaz.Cuenta import Cuenta
+from gestorAplicacion.interfaz import Cuenta
 from datetime import date
 
-class Colchon(Cuenta):
+class Ahorro(Cuenta):
 
     def __init__(self, usuario, nombre, fechaRetiro):
         super().__init__(usuario, nombre)

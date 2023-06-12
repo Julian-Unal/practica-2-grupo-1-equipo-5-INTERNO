@@ -11,7 +11,7 @@ class Garantia(Enum):
 class Estadistica:
     @staticmethod
     def calcular_posible_cantidad_prestamo(usuario, ingresos, edad, hijos, opc_garantia):
-        if not usuario.get_ahorros():
+        if not usuario.getAhorros():
             return Estadistica.promediar_variables_del_usuario(ingresos, 0, edad, hijos, opc_garantia)
         else:
             promedio_ahorros = Estadistica.calcular_promedio_ahorros(usuario)
@@ -19,8 +19,8 @@ class Estadistica:
 
     @staticmethod
     def calcular_promedio_ahorros(usuario):
-        total_ahorros = sum(ahorro.get_saldo() for ahorro in usuario.get_ahorros())
-        cantidad_ahorros = len(usuario.get_ahorros())
+        total_ahorros = sum(ahorro.getSaldo() for ahorro in usuario.getAhorros())
+        cantidad_ahorros = len(usuario.getAhorros())
 
         promedio_ahorros = total_ahorros / cantidad_ahorros
 

@@ -5,5 +5,3 @@ class Abonable:
     def terminar(self, cuenta):
         pass
 
-    def terminar(self, categoria):
-        pass

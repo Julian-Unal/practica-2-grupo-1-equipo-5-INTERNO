@@ -1,7 +1,6 @@
 
 # Ana Guarín
 # Isabela Hernandez
-# Cristian Menaa
 # Julián Álvarez
 
 from enum import Enum
@@ -33,9 +32,4 @@ class Categoria (Enum):
 	def setSaldo(self, presupuesto):
 		self._presupuesto = presupuesto
 
-listaCat = list(Categoria)
-
-
-# Imprimir el contenido del array
-for cat in listaCat:
-	print(cat)
+listaCat = list(Categoria) #luego se puede acceder a cada una con un recorrido for i in listaCat: i.name, i.saldo, i.presupuesto  ó  Categoria.Viaje.name, Categoria.Viaje.value[0] (saldo),Categoria.Viaje.value[1] (presupuesto),

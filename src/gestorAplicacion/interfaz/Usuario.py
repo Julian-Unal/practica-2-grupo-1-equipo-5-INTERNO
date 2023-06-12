@@ -1,107 +1,110 @@
 import pickle
 
+from gestorAplicacion.interfaz import Categoria
+
 
 class Usuario:
     def __init__(self, cedula, nombre, correo):
-        self.cedula = cedula
-        self.nombre = nombre
-        self.correo = correo
-        self.ahorros = []
-        self.ingresos = []
-        self.retiros = []
-        self.prestamos = []
-        self.metas = []
+        self._cedula = cedula
+        self._nombre = nombre
+        self._correo = correo
+        self._bolsillos=list(Categoria)
+        self._ahorros = []
+        self._ingresos = []
+        self._retiros = []
+        self._prestamos = []
+        self._metas = []
 
-    def get_nombre(self):
-        return self.nombre
+    def getNombre(self):
+        return self._nombre
 
-    def get_correo(self):
-        return self.correo
+    def getCorreo(self):
+        return self._correo
 
-    def get_cedula(self):
-        return self.cedula
+    def getCedula(self):
+        return self._cedula
 
-    def get_ahorros(self):
-        return self.ahorros
+    def getAhorros(self):
+        return self._ahorros
 
-    def get_ingresos(self):
-        return self.ingresos
+    def getIngresos(self):
+        return self._ingresos
 
-    def get_retiros(self):
-        return self.retiros
+    def getRetiros(self):
+        return self._retiros
 
-    def get_prestamos(self):
-        return self.prestamos
+    def getPrestamos(self):
+        return self._prestamos
 
-    def get_metas(self):
-        return self.metas
+    def getMetas(self):
+        return self._metas
 
-    def set_nombre(self, nombre):
-        self.nombre = nombre
+    def setNombre(self, nombre):
+        self._nombre = nombre
 
-    def set_correo(self, correo):
-        self.correo = correo
+    def setCorreo(self, correo):
+        self._correo = correo
 
-    def set_cedula(self, cedula):
-        self.cedula = cedula
+    def setCedula(self, cedula):
+        self._cedula = cedula
 
-    def set_ahorros(self, ahorros):
-        self.ahorros = ahorros
+    def setAhorros(self, ahorros):
+        self._ahorros = ahorros
 
-    def set_ingresos(self, ingresos):
-        self.ingresos = ingresos
+    def setIngresos(self, ingresos):
+        self._ingresos = ingresos
 
-    def set_retiros(self, retiros):
-        self.retiros = retiros
+    def setRetiros(self, retiros):
+        self._retiros = retiros
 
-    def set_prestamos(self, prestamos):
-        self.prestamos = prestamos
+    def setPrestamos(self, prestamos):
+        self._prestamos = prestamos
 
-    def set_metas(self, metas):
-        self.metas = metas
+    def setMetas(self, metas):
+        self._metas = metas
 
-    def nuevo_ingreso(self, ingreso):
-        if ingreso.get_cuenta_destino() is not None:
-            ingreso.get_cuenta_destino().depositar(ingreso.get_monto())
-            self.ingresos.append(ingreso)
+    def nuevoIngreso(self, ingreso):
+        if ingreso.getCuentaDestino() is not None:
+            ingreso.getCuentaDestino().depositar(ingreso.getMonto())
+            self._ingresos.append(ingreso)
 
-    def nuevo_retiro(self, retiro):
-        if retiro.get_cuenta_origen() is not None:
-            salida = retiro.get_cuenta_origen().retirar(retiro.get_monto())
+    def nuevoRetiro(self, retiro):
+        if retiro.getCuentaOrigen() is not None:
+            salida = retiro.getCuentaOrigen().retirar(retiro.getMonto())
 
             if salida:
-                self.retiros.append(retiro)
+                self._retiros.append(retiro)
 
             return salida
         else:
-            if retiro.get_categoria().get_saldo() <= retiro.get_monto():
+            if retiro.getCategoria().getSaldo() <= retiro.getMonto():
                 return True
             else:
                 return False
 
-    def nuevo_ahorro(self, ahorro):
-        self.ahorros.append(ahorro)
+    def nuevoAhorro(self, ahorro):
+        self._ahorros.append(ahorro)
 
-    def nueva_meta(self, meta):
-        self.metas.append(meta)
+    def nuevaMeta(self, meta):
+        self._metas.append(meta)
 
-    def get_dinero_cuenta(self):
+    def getDineroCuenta(self):
         total = 0
 
-        for ahorro in self.ahorros:
-            total += ahorro.get_saldo()
+        for ahorro in self._ahorros:
+            total += ahorro.getSaldo()
 
         for categoria in Categoria:
-            total += categoria.get_saldo()
+            total += categoria.getSaldo()
 
-        for meta in self.metas:
-            total += meta.get_saldo()
+        for meta in self._metas:
+            total += meta.getSaldo()
 
         return total
 
-    def nuevo_prestamo(self, prestamo, bolsillo):
-        self.prestamos.append(prestamo)
-        bolsillo.set_saldo(bolsillo.get_saldo() + prestamo.get_monto_prestado())
+    def nuevoPrestamo(self, prestamo, bolsillo):
+        self._prestamos.append(prestamo)
+        bolsillo.setSaldo(bolsillo.getSaldo() + prestamo.getMontoPrestado())
 
     def guardar_en_archivo(self, nombre_archivo):
         with open(nombre_archivo, "wb") as archivo:
@@ -112,66 +115,3 @@ class Usuario:
         with open(nombre_archivo, "rb") as archivo:
             usuario = pickle.load(archivo)
         return usuario
-
-
-class Categoria:
-    def __init__(self):
-        self.saldo = 0
-
-    def get_saldo(self):
-        return self.saldo
-
-    def set_saldo(self, saldo):
-        self.saldo = saldo
-
-
-class Ahorro:
-    def __init__(self, saldo):
-        self.saldo = saldo
-
-    def get_saldo(self):
-        return self.saldo
-
-
-class Ingreso:
-    def __init__(self, cuenta_destino, monto):
-        self.cuenta_destino = cuenta_destino
-        self.monto = monto
-
-    def get_cuenta_destino(self):
-        return self.cuenta_destino
-
-    def get_monto(self):
-        return self.monto
-
-
-class Retiro:
-    def __init__(self, cuenta_origen, monto, categoria):
-        self.cuenta_origen = cuenta_origen
-        self.monto = monto
-        self.categoria = categoria
-
-    def get_cuenta_origen(self):
-        return self.cuenta_origen
-
-    def get_monto(self):
-        return self.monto
-
-    def get_categoria(self):
-        return self.categoria
-
-
-class Prestamo:
-    def __init__(self, monto_prestado):
-        self.monto_prestado = monto_prestado
-
-    def get_monto_prestado(self):
-        return self.monto_prestado
-
-
-class Meta:
-    def __init__(self, saldo):
-        self.saldo = saldo
-
-    def get_saldo(self):
-        return self.saldo
