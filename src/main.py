@@ -1,10 +1,10 @@
 from tkinter import *
 from ventanaInicio import VentanaInicio
 import ventanaInicio
-from gestorAplicacion.usuario.Usuario import Usuario
+from gestorAplicacion.interfaz.Usuario import Usuario
 from datetime import date, time, datetime
-from baseDatos.serializador import Serializador
-from baseDatos.deserializador import Deserializador
+from baseDatos.Serializador import Serializador
+from baseDatos.Deserializador import Deserializador
 
 #Se deserializa el usuario administrador
 deserializar = Deserializador()

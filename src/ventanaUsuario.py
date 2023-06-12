@@ -4,13 +4,13 @@ import os
 import tkinter
 from ventanas.fieldFrame import FieldFrame
 from tkinter import ttk
-from gestorAplicacion.usuario.Usuario import Bolsillo
+from gestorAplicacion.interfaz.Usuario import Bolsillo
 from excepciones.errorAplicacion import ErrorAplicacion
 from excepciones.excepcionExistente import ExcepcionExistente
 from excepciones.excepcionLongitud import ExcepcionLongitud
 from excepciones.excepcionNumerica import ExcepcionNumerica
 from excepciones.excepcionVacio import ExcepcionVacio
-from baseDatos.serializador import Serializador
+from baseDatos.Serializador import Serializador
 from ventanas.popUp import PopUp
 
 from gestorAplicacion.usuario.Bolsillo import Bolsillo
