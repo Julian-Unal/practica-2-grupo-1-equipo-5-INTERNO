@@ -32,3 +32,10 @@ class Categoria (Enum):
 	
 	def setSaldo(self, presupuesto):
 		self._presupuesto = presupuesto
+
+listaCat = list(Categoria)
+
+
+# Imprimir el contenido del array
+for cat in listaCat:
+	print(cat)

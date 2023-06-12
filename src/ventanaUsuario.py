@@ -4,7 +4,7 @@ import os
 import tkinter
 from ventanas.fieldFrame import FieldFrame
 from tkinter import ttk
-from gestorAplicacion.interfaz.Usuario import Bolsillo
+from gestorAplicacion.interfaz.Categoria import Categoria
 from excepciones.errorAplicacion import ErrorAplicacion
 from excepciones.excepcionExistente import ExcepcionExistente
 from excepciones.excepcionLongitud import ExcepcionLongitud
@@ -13,8 +13,8 @@ from excepciones.excepcionVacio import ExcepcionVacio
 from baseDatos.Serializador import Serializador
 from ventanas.popUp import PopUp
 
-from gestorAplicacion.usuario.Bolsillo import Bolsillo
-from gestorAplicacion.usuario.Colchon import Colchon
+from gestorAplicacion.interfaz.Categoria import Categoria
+from gestorAplicacion.interfaz.Ahorro import Colchon
 
 class VentanaUsuario(Tk):
 
