@@ -38,6 +38,9 @@ class Usuario:
 
     def getMetas(self):
         return self._metas
+    
+    def getBolsillos(self):
+        return self._bolsillos
 
     def setNombre(self, nombre):
         self._nombre = nombre
